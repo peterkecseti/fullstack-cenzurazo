@@ -1,8 +1,12 @@
-textarea{
+textarea {
     resize: none;
 }
 
-body{
-    margin: 0;
-    padding: 0;
+*::-webkit-scrollbar {
+    height: 0px;
+    width: 0px;
+}
+
+* {
+    overflow-x:hidden;
 }

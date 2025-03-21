@@ -2,6 +2,10 @@ export default function Navbar(){
     var element = document.querySelector('Navbar');
     const navbar = document.createElement('nav')
 
+    if(element == null){
+        return;
+    }
+
     navbar.className = 'navbar navbar-dark bg-dark p-3 mb-5 shadow rounded'
     navbar.innerHTML = `
             <div class="container-fluid">
