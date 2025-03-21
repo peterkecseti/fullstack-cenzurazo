@@ -9,18 +9,46 @@
 </head>
 <body class="bg-dark">
     <div class="container-fluid text-light">
+        <!-- Blur -->
+        <div class="blur" id="blur">
+            <div class="container-fluid">
+                <h3 class="text-center pb-5">Cenzúrázott szöveg</h3>
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-12 mx-auto">
+                        <textarea disabled class="form-control bg-secondary text-light p-3 shadow rounded border-0" 
+                                  style="height: 60vh; z-index: 100;"
+                                  id="textarea-censored"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-12 mx-auto pt-5 d-flex justify-content-center">
+                        <button class="btn btn-danger" id="btn-close">Vissza</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <Navbar/>
 
         <h3 class="text-center pb-5">Cenzúrázandó szöveg</h3>
         <div class="row">
             <div class="col-lg-6 col-12 mx-auto">
                 <textarea class="form-control bg-secondary text-light p-3 shadow rounded border-0" 
-                          style="height: 600px;"></textarea>
+                          style="height: 60vh;"
+                          id="textarea-input"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12 mx-auto pt-5 d-flex justify-content-center">
+                <button class="btn btn-danger" id="btn-start">Átírás</button>
             </div>
         </div>
     </div>
 
 
+    <script src="scripts/censore.js"></script>
     <script type="module" src="scripts/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

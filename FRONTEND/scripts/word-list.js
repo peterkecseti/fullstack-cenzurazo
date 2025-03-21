@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // fetch word list from backend
     const placeholderWords = [
         'alma@barack,narancs,körte',
