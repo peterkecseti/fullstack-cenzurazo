@@ -1,33 +1,85 @@
+:root {
+    --darkblue: #080f1d;
+    --lightblue: #97b0de
+}
+
+body {
+    background-color: var(--darkblue);
+    color: var(--lightblue);
+    font-size: 20px;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
 textarea {
+    font-size: 16px;
+    height: 500px;
+    width: 100%;
+    border: none;
     resize: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--lightblue)
 }
 
-*::-webkit-scrollbar {
-    height: 0px;
-    width: 0px;
+textarea:focus {
+    outline: none;
+    caret-color: transparent;
+    text-align: left;
 }
 
-* {
-    overflow-x:hidden;
+button {
+    font-size: 20px;
+    border-radius: 0;
+    border: none;
+    height: 40px;
+    background-color: var(--lightblue);
+    color: var(--darkblue)
 }
 
-.blur {
-    padding-top: 115px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    /* background: rgba(255, 255, 255, 0.1); */
-    backdrop-filter: blur(10px);
-    z-index: 1050;
-    
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease-in-out;
+thead {
+    color: var(--darkblue);
 }
 
-.blur.active {
-    opacity: 1;
-    pointer-events: all; /* Enable interactions when active */
+td {
+    color: var(--lightblue)
+}
+
+table {
+    max-height: 200px I !important;
+}
+
+.bg-lightblue {
+    background-color: var(--lightblue);
+    color: var(--darkblue)
+}
+
+.space-mono-regular {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.space-mono-bold {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.space-mono-regular-italic {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.space-mono-bold-italic {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.border-holo {
+    border: 2px solid var(--lightblue);
+    box-shadow: 0px 0px 5px 0px var(--lightblue);
 }
