@@ -4,85 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/main2.css">
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body class="space-mono-regular">
-
-    <!-- Main page -->
-    <div class="container vh-100" id="main">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <h1 class="mb-5 mt-5">Cenzúrázó</h1>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-6 border-holo">
-                <p class="mt-3 ml-3">Cenzúrázandó szöveg</p>
-                <textarea class="ml-3" name="" id="" placeholder="Ide írhatod a szöveget"></textarea>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-auto">
-                <button class="mt-5">Küldés</button>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Censored text -->
-    <div class="container vh-100 d-flex justify-content-center align-items-center" id="censored">
-        <div class="row w-100 justify-content-center">
-            <div class="col-lg-6 border-holo">
-                <p class="mt-3 ml-3">Cenzúrázott szöveg</p>
-                <textarea disabled class=" ml-3" id="censored-text" placeholder="A cenzúrázott szöveg itt fog megjelenni"></textarea>
-            </div>
-        </div>
-    </div>
-
-    <!-- Words list -->
-    <div class="container vh-100" id="word-list">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <h1 class="mb-5 mt-5">Szavak listája</h1>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-12 border-holo m-0 p-0">
-                <div style="max-height: 500px; overflow-y: auto;">
-                    <table class="table text-center table-borderless mb-0">
-                        <thead class="bg-lightblue" style="position: sticky; top: 0; ">
-                            <tr>
-                                <th>Eredeti szó</th>
-                                <th>Alternatívák</th>
-                                <th>Törlés</th>
-                            </tr>
-                        </thead>
-                        <tbody id="words-list">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add words -->
-    <div class="container vh-100" id="add-word">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <h1 class="mb-5 mt-5">Szavak hozzáadása</h1>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-6 border-holo">
-                <p class="mt-3 ml-3">Cenzúrázandó szöveg</p>
-                <textarea class="ml-3" name="" id="" placeholder="Formátum: szó@alternatíva1,alternatíva2"></textarea>
-            </div>
-        </div>
-    </div>
+    
+    <MainPage></MainPage>
+    <Censored></Censored>
+    <WordsList></WordsList>
+    <AddWords></AddWords>
 
     <script type="module" src="./scripts/main.js"></script>
     <script src="./scripts/word-list.js"></script>
