@@ -1,34 +1,33 @@
 export default class WordsList extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
-<div class="container vh-100" id="word-list">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <h1 class="mb-5 mt-5">Szavak listája</h1>
+        <div class="container vh-100" id="word-list">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h1 class="mb-5 mt-5">Szavak listája</h1>
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-12 border-holo m-0 p-0">
-                <div style="max-height: 50vh; overflow-y: auto;">
-                    <table class="table text-center table-borderless mb-0">
-                        <thead class="bg-lightblue" style="position: sticky; top: 0; ">
-                            <tr>
-                                <th>Eredeti szó</th>
-                                <th>Alternatívák</th>
-                                <th>Törlés</th>
-                            </tr>
-                        </thead>
-                        <tbody id="words-list">
-                        </tbody>
-                    </table>
+            <div class="row justify-content-center">
+                <div class="col-12 border-holo m-0 p-0">
+                    <div style="max-height: 50vh; overflow-y: auto;">
+                        <table class="table text-center table-borderless mb-0">
+                            <thead class="bg-lightblue" style="position: sticky; top: 0; ">
+                                <tr>
+                                    <th>Eredeti szó</th>
+                                    <th>Alternatívák</th>
+                                    <th>Törlés</th>
+                                </tr>
+                            </thead>
+                            <tbody id="words-list"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         `;
     }
 }
-customElements.define('words-list', WordsList);
+customElements.define('comp-wordlist', WordsList);
 
 
 document.addEventListener('DOMContentLoaded', () => {

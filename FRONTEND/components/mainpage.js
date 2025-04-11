@@ -23,7 +23,7 @@ export default class MainPage extends HTMLElement {
     }
 }
 
-customElements.define('main-page', MainPage);
+customElements.define('comp-mainpage', MainPage);
 
 
 

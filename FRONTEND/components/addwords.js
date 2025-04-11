@@ -23,7 +23,7 @@ export default class AddWords extends HTMLElement {
     }
 }
 
-customElements.define('add-words', AddWords);
+customElements.define('comp-addwords', AddWords);
 
 // get words from textarea
 
