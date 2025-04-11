@@ -1,0 +1,7 @@
+A kutya minden reggel ugatott, amikor a postás megérkezett. A kutya nem szerette a postást, mert egyszer a postás rálépett a labdára. A gyerek próbálta visszafogni a kutyát, de a kutya kiszabadult. A labda átgurult az úton, a gyerek pedig utána szaladt. A postás közben megpróbálta felvenni a labdát, de a kutya odaért elsőként. A macska a kerítés tetejéről nézte, ahogy a kutya és a gyerek a labdával játszik. A postás csak legyintett, majd továbbment.
+
+kutya@eb,blöki
+postás@kézbesítő,levélhordó
+labda@gömb,játékszer
+gyerek@kölyök,fiatal
+macska@cica,kandúr
