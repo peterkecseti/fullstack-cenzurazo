@@ -81,10 +81,18 @@ namespace BACKEND.Controllers
 
                         censoredText = Regex.Replace(censoredText, pattern, match =>
                         {
-                            var replacement = word.Replacements[replacementIndex % word.Replacements.Count]; // cycling replacements to avoid word repetition
+                            var replacementText = word.Replacements[replacementIndex % word.Replacements.Count];
                             replacementIndex++;
 
-                            return MatchCase(replacement, match.Value);
+                            var formattedReplacement = 
+                                $"<span class='badge badge-success'>" +                 // add bootstrap formatting
+                                    $"{MatchCase(replacementText, match.Value)}" +
+                                $"</span> " +
+                                $"<span class='badge badge-danger'>" +
+                                    $"{match.Value}" +
+                                $"</span>";
+                            return formattedReplacement;
+
                         }, RegexOptions.IgnoreCase);
                     }
                 }
