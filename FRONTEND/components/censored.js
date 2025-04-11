@@ -5,7 +5,9 @@ export default class Censored extends HTMLElement {
             <div class="row w-100 justify-content-center">
                 <div class="col-lg-4 col-sm-12 border-holo">
                     <p class="mt-3 ml-3">Cenzúrázott szöveg</p>
-                    <p disabled class="ml-3" id="censored-text" style="height: 500px"></p>
+                    <div style="max-height: 50vh; overflow-y: auto;">
+                        <p disabled class="ml-3" id="censored-text" style="height: 500px"></p>
+                    </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 border-holo">
                     <p class="mt-3 ml-3">Szófelhő</p>
