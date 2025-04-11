@@ -10,12 +10,12 @@ export default class AddWords extends HTMLElement {
         <div class="row justify-content-center">
             <div class="col-lg-6 border-holo">
                 <p class="mt-3 ml-3">Cenzúrázandó szöveg</p>
-                <textarea class="ml-3" name="" id="" placeholder="Formátum: szó@alternatíva1,alternatíva2"></textarea>
+                <textarea class="ml-3" name="" id="words-textarea" placeholder="Formátum: szó@alternatíva1,alternatíva2"></textarea>
             </div>
         </div>
         <div class="row justify-content-center">
                 <div class="col-lg-auto">
-                    <button class="mt-5">Hozzáad</button>
+                    <button class="mt-5" id="btn-add-words">Hozzáad</button>
                 </div>
             </div>
     </div>
@@ -24,3 +24,15 @@ export default class AddWords extends HTMLElement {
 }
 
 customElements.define('add-words', AddWords);
+
+// get words from textarea
+
+document.getElementById("btn-add-words").addEventListener('click', ()=>{
+    var textarea = document.getElementById('words-textarea')
+    var words = textarea.value
+        .split('\n')                            // split content by rows
+        .filter(line => line.trim() !== "");    // delete empty rows
+
+
+    console.log(words) // send words to backend
+})

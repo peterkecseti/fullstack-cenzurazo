@@ -14,3 +14,6 @@ export default class Censored extends HTMLElement {
 }
 
 customElements.define('censored-section', Censored);
+
+
+

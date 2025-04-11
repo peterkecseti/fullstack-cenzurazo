@@ -3,6 +3,30 @@
     --lightblue: #97b0de
 }
 
+*{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+    display: none;
+}
+
+.snap-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+main-page,
+censored-section,
+words-list,
+add-words {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: block;
+}
+
 body {
     background-color: var(--darkblue);
     color: var(--lightblue);
@@ -15,7 +39,7 @@ html{
 
 textarea {
     font-size: 16px;
-    height: 500px;
+    height: 60vh;
     width: 100%;
     border: none;
     resize: none;
