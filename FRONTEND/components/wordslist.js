@@ -1,3 +1,5 @@
+import {backendAddress} from "../scripts/backend-address.js";
+
 export default class WordsList extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -28,6 +30,7 @@ export default class WordsList extends HTMLElement {
 
         this.BuildTable();
     }
+
 
     async BuildTable() {
         const wordsTable = this.querySelector('#words-list');
@@ -64,7 +67,7 @@ export default class WordsList extends HTMLElement {
     }
 
     async GetWords() {
-        const res = await fetch("http://localhost:5276", {
+        const res = await fetch(`${backendAddress}`, {
             method: "GET"
         });
 
@@ -77,7 +80,7 @@ export default class WordsList extends HTMLElement {
     }
 
     async DeleteWord(id) {
-        const res = await fetch(`http://localhost:5276/delete-word/${id}`, {
+        const res = await fetch(`${backendAddress}/delete-word/${id}`, {
             method: "DELETE"
         });
 

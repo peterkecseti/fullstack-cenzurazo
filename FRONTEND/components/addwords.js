@@ -1,3 +1,4 @@
+import { backendAddress } from "../scripts/backend-address.js";
 import WordsList from "./wordslist.js";
 
 export default class AddWords extends HTMLElement {
@@ -31,12 +32,13 @@ customElements.define('comp-addwords', AddWords);
 
 document.getElementById("btn-add-words").addEventListener('click', async() => {
 
+    // const backendAddress = backendAddress;
     var wordListComponent = document.querySelector('comp-wordlist')
     var textarea = document.getElementById('words-textarea')
     var words = textarea.value
     const wordsJson = ParseWordsToJson()
 
-    const response = await fetch("http://localhost:5276/add-words", {
+    const response = await fetch(`${backendAddress}/add-words`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
