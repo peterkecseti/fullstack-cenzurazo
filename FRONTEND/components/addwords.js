@@ -27,12 +27,32 @@ customElements.define('add-words', AddWords);
 
 // get words from textarea
 
-document.getElementById("btn-add-words").addEventListener('click', ()=>{
+document.getElementById("btn-add-words").addEventListener('click', () => {
     var textarea = document.getElementById('words-textarea')
     var words = textarea.value
-        .split('\n')                            // split content by rows
-        .filter(line => line.trim() !== "");    // delete empty rows
+    const wordsJson = ParseWordsToJson()
 
 
-    console.log(words) // send words to backend
+    console.log(wordsJson) // send to backend
+
+
+    function ParseWordsToJson() {
+        const lines = words.trim().split('\n')
+
+        const result = lines.map(line => {
+            const [wordPart, replacementsPart] = line.split('@')
+
+            if (!wordPart || !replacementsPart) return null
+
+            const word = wordPart.trim()
+            const replacements = replacementsPart
+                .split(',')
+                .map(r => r.trim())
+                .filter(r => r.length > 0)
+
+            return { word, replacements }
+        }).filter(entry => entry !== null)
+
+        return result;
+    }
 })

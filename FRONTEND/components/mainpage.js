@@ -29,15 +29,15 @@ customElements.define('main-page', MainPage);
 
 document.addEventListener('DOMContentLoaded', () => {
     var btnStart = document.getElementById('btn-start');
-
     btnStart.addEventListener('click', ()=>{
 
         var input = document.getElementById('textarea-input');
         var text = input.value;
 
         // send to backend
-        console.log(text)
-        
+        if(text.length > 0)
+        {
+            console.log(text)
+        }
     })
-
 })

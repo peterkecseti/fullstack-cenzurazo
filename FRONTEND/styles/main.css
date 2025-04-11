@@ -49,8 +49,9 @@ textarea {
 
 textarea:focus {
     outline: none;
-    caret-color: transparent;
+    /* caret-color: transparent; */
     text-align: left;
+
 }
 
 button {
@@ -68,10 +69,6 @@ thead {
 
 td {
     color: var(--lightblue)
-}
-
-table {
-    max-height: 200px I !important;
 }
 
 .bg-lightblue {

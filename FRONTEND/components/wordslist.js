@@ -9,7 +9,7 @@ export default class WordsList extends HTMLElement {
         </div>
         <div class="row justify-content-center">
             <div class="col-12 border-holo m-0 p-0">
-                <div style="max-height: 500px; overflow-y: auto;">
+                <div style="max-height: 50vh; overflow-y: auto;">
                     <table class="table text-center table-borderless mb-0">
                         <thead class="bg-lightblue" style="position: sticky; top: 0; ">
                             <tr>
@@ -28,52 +28,122 @@ export default class WordsList extends HTMLElement {
         `;
     }
 }
-
 customElements.define('words-list', WordsList);
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // fetch word list from backend
+    let words = [];
     const placeholderWords = [
-        'alma@barack,narancs,körte',
-        'kutya@cica',
-        'fekete@fehér,sárga,barna',
-        'sötét@világos',
-        'sötét@világos',
-        'sötét@világos',
-        'sötét@világos',
-        'sötét@világos',
-        'sötét@világos',
-        'sötét@világos',
-        'sötét@világos',
-        'sötét@világos',
-        'sötét@világos',
-        'sötét@világos',
-        'sötét@világos',
-    ];
+        {
+            word: 'alma',
+            replacements:[
+                'barack',
+                'narancs',
+                'körte',
+            ],
+            id: 0
+        },
+        {
+            word: 'kutya',
+            replacements:[
+                'cica'
+            ],
+            id: 1
+        },
+        {
+            word: 'fekete',
+            replacements:[
+                'fehér',
+                'sárga',
+                'barna',
+            ],
+            id: 2
+        },
+        {
+            word: 'sötét',
+            replacements:[
+                'világos'
+            ],
+            id: 3
+        },
+        {
+            word: 'sötét',
+            replacements:[
+                'világos'
+            ],
+            id: 4
+        },
+        {
+            word: 'sötét',
+            replacements:[
+                'világos'
+            ],
+            id: 5
+        },
+        {
+            word: 'sötét',
+            replacements:[
+                'világos'
+            ],
+            id: 6
+        },
+        {
+            word: 'sötét',
+            replacements:[
+                'világos'
+            ],
+            id: 7
+        },
+        {
+            word: 'sötét',
+            replacements:[
+                'világos'
+            ],
+            id: 8
+        },
+    ]
 
     var wordsTable = document.getElementById('words-list');
+    BuildTable();
 
-    placeholderWords.forEach(word => {
-        var tableRow = document.createElement('tr')
-        
-        const colMainWord = document.createElement('td')
-        colMainWord.innerHTML = word.split('@')[0];
+    function BuildTable(){
+        GetWords();
+        wordsTable.innerHTML = ''
 
-        const colReplacementWords = document.createElement('td')
-        colReplacementWords.innerHTML = word.split('@')[1];
+        words.forEach((word) => {
+            var tableRow = document.createElement('tr')
+            
+            const colMainWord = document.createElement('td')
+            colMainWord.innerHTML = word.word;
+    
+            const colReplacementWords = document.createElement('td')
+            colReplacementWords.innerHTML = word.replacements;
+    
+            const colRemoveButton = document.createElement('td')
+            const removeButton = document.createElement('button')
+            removeButton.className = "btn btn-danger"
+            removeButton.innerHTML = "Törlés"
+            removeButton.addEventListener('click', ()=>{
+                DeleteWord(word.id);
+            })
+            colRemoveButton.appendChild(removeButton)
+    
+            tableRow.appendChild(colMainWord)
+            tableRow.appendChild(colReplacementWords)
+            tableRow.appendChild(colRemoveButton)
+    
+            wordsTable.appendChild(tableRow);
+        });
+    }
 
-        const colRemoveButton = document.createElement('td')
-        const removeButton = document.createElement('button')
-        removeButton.className = "btn btn-danger"
-        removeButton.innerHTML = "Törlés"
-        colRemoveButton.appendChild(removeButton)
+    function DeleteWord(id){
+        // POST delete words
+        console.log(id)
+        BuildTable();
+    }
 
-        tableRow.appendChild(colMainWord)
-        tableRow.appendChild(colReplacementWords)
-        tableRow.appendChild(colRemoveButton)
-
-        wordsTable.appendChild(tableRow);
-    });
+    function GetWords(){
+        // GET get words
+        words = placeholderWords
+    }
 });
