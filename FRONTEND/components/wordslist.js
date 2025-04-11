@@ -31,11 +31,9 @@ export default class WordsList extends HTMLElement {
         this.BuildTable();
     }
 
-
     async BuildTable() {
         const wordsTable = this.querySelector('#words-list');
         const words = await this.GetWords();
-
         wordsTable.innerHTML = '';
 
         words.forEach((word) => {

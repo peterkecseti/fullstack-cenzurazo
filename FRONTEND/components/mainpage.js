@@ -25,10 +25,6 @@ export default class MainPage extends HTMLElement {
     }
 }
 
-customElements.define('comp-mainpage', MainPage);
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const censoredComponent = document.querySelector('comp-censored')
     var btnStart = document.getElementById('btn-start');
@@ -51,3 +47,5 @@ document.addEventListener('DOMContentLoaded', () => {
         censoredComponent.SetValue(result);
     })
 })
+
+customElements.define('comp-mainpage', MainPage);

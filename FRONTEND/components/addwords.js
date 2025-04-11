@@ -17,18 +17,16 @@ export default class AddWords extends HTMLElement {
             </div>
         </div>
         <div class="row justify-content-center">
-                <div class="col-lg-auto">
-                    <button class="mt-5" id="btn-add-words">Hozzáad</button>
-                </div>
+            <div class="col-lg-auto">
+                <button class="mt-5" id="btn-add-words">Hozzáad</button>
             </div>
+        </div>
     </div>
         `;
     }
 }
 
 customElements.define('comp-addwords', AddWords);
-
-// get words from textarea
 
 document.getElementById("btn-add-words").addEventListener('click', async() => {
 
@@ -44,7 +42,7 @@ document.getElementById("btn-add-words").addEventListener('click', async() => {
         },
         body: JSON.stringify(wordsJson)
     })
-    .then(()=>{wordListComponent.BuildTable()}) // Refresh words list table
+    .then(() => {wordListComponent.BuildTable()}) // Refresh words list table
     .catch(err => console.error("Error:", err));
 
 
@@ -68,3 +66,5 @@ document.getElementById("btn-add-words").addEventListener('click', async() => {
         return result;
     }
 })
+
+
