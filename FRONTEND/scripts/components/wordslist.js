@@ -1,9 +1,7 @@
-export default function WordsList() {
-
-    var root = document.querySelector('WordsList')
-    var component = document.createElement('div')
-    component.innerHTML = `
-            <div class="container vh-100" id="word-list">
+export default class WordsList extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+<div class="container vh-100" id="word-list">
         <div class="row justify-content-center">
             <div class="col-12">
                 <h1 class="mb-5 mt-5">Szavak listája</h1>
@@ -27,8 +25,8 @@ export default function WordsList() {
             </div>
         </div>
     </div>
-    `
-
-    root.appendChild(component)
-
+        `;
+    }
 }
+
+customElements.define('words-list', WordsList);

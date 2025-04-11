@@ -1,8 +1,6 @@
-export default function Censored() {
-
-    var root = document.querySelector('Censored')
-    var component = document.createElement('div')
-    component.innerHTML = `
+export default class Censored extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
             <div class="container vh-100 d-flex justify-content-center align-items-center" id="censored">
                 <div class="row w-100 justify-content-center">
                     <div class="col-lg-6 border-holo">
@@ -11,8 +9,8 @@ export default function Censored() {
                     </div>
                 </div>
             </div>
-    `
-
-    root.prepend(component)
-
+        `;
+    }
 }
+
+customElements.define('censored-section', Censored);

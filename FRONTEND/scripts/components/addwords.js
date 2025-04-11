@@ -1,8 +1,6 @@
-export default function AddWords() {
-
-    var root = document.querySelector('AddWords')
-    var component = document.createElement('div')
-    component.innerHTML = `
+export default class AddWords extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
                 <div class="container vh-100" id="add-word">
         <div class="row justify-content-center">
             <div class="col-6">
@@ -15,9 +13,14 @@ export default function AddWords() {
                 <textarea class="ml-3" name="" id="" placeholder="Formátum: szó@alternatíva1,alternatíva2"></textarea>
             </div>
         </div>
+        <div class="row justify-content-center">
+                <div class="col-lg-auto">
+                    <button class="mt-5">Hozzáad</button>
+                </div>
+            </div>
     </div>
-    `
-
-    root.appendChild(component)
-
+        `;
+    }
 }
+
+customElements.define('add-words', AddWords);
