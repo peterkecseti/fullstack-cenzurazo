@@ -1,3 +1,5 @@
+import WordsList from "./wordslist.js";
+
 export default class AddWords extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -27,13 +29,22 @@ customElements.define('comp-addwords', AddWords);
 
 // get words from textarea
 
-document.getElementById("btn-add-words").addEventListener('click', () => {
+document.getElementById("btn-add-words").addEventListener('click', async() => {
+
+    var wordListComponent = document.querySelector('comp-wordlist')
     var textarea = document.getElementById('words-textarea')
     var words = textarea.value
     const wordsJson = ParseWordsToJson()
 
-
-    console.log(wordsJson) // send to backend
+    const response = await fetch("http://localhost:5276/add-words", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(wordsJson)
+    })
+    .then(()=>{wordListComponent.BuildTable()}) // Refresh words list table
+    .catch(err => console.error("Error:", err));
 
 
     function ParseWordsToJson() {
