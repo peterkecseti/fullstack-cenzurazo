@@ -11,6 +11,11 @@ export default class Censored extends HTMLElement {
             </div>
         `;
     }
+
+    async SetValue(result){
+        const resultTextarea = document.getElementById('censored-text')
+        resultTextarea.innerHTML = result.censoredText;
+    }
 }
 
 customElements.define('comp-censored', Censored);

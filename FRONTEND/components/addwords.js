@@ -32,7 +32,6 @@ customElements.define('comp-addwords', AddWords);
 
 document.getElementById("btn-add-words").addEventListener('click', async() => {
 
-    // const backendAddress = backendAddress;
     var wordListComponent = document.querySelector('comp-wordlist')
     var textarea = document.getElementById('words-textarea')
     var words = textarea.value

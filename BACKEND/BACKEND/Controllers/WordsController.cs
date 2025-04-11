@@ -3,6 +3,8 @@ using BACKEND.Dto;
 using BACKEND.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Any;
+using System.Text.RegularExpressions;
 
 namespace BACKEND.Controllers
 {
@@ -50,6 +52,66 @@ namespace BACKEND.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = $"Word with ID {id} deleted." });
+        }
+
+        [HttpPost("censore-text")]
+        public async Task<IActionResult> CensoreText([FromBody] TextDto text)
+        {
+            var result = await GetWords();
+            var allWords = result.Value?.ToList() ?? new List<Word>();
+
+            string inputText = text.Text;
+            string censoredText = inputText;
+
+            var matchedWords = new List<Word>();
+
+            foreach (var word in allWords)
+            {
+                var pattern = $@"\b{Regex.Escape(word.Original)}\b"; // regex word boundary
+                var matches = Regex.Matches(censoredText, pattern, RegexOptions.IgnoreCase);
+
+                if (matches.Count > 0)
+                {
+                    word.Occourances = matches.Count;
+                    matchedWords.Add(word);
+
+                    if (word.Replacements != null && word.Replacements.Any())
+                    {
+                        int replacementIndex = 0;
+
+                        censoredText = Regex.Replace(censoredText, pattern, match =>
+                        {
+                            var replacement = word.Replacements[replacementIndex % word.Replacements.Count]; // cycling replacements to avoid word repetition
+                            replacementIndex++;
+
+                            return MatchCase(replacement, match.Value);
+                        }, RegexOptions.IgnoreCase);
+                    }
+                }
+            }
+
+            return Ok(new
+            {
+                OriginalText = inputText,
+                CensoredText = censoredText,
+                CensoredWords = matchedWords.Select(word => new
+                {
+                    word.Original,
+                    word.Replacements,
+                    word.Occourances
+                })
+            });
+        }
+
+        private static string MatchCase(string replacement, string original)
+        {
+            if (string.IsNullOrEmpty(original)) return replacement;
+
+            if (original.All(char.IsUpper)) return replacement.ToUpper();
+
+            if (char.IsUpper(original[0])) return char.ToUpper(replacement[0]) + replacement.Substring(1);
+
+            return replacement.ToLower();
         }
     }
 }

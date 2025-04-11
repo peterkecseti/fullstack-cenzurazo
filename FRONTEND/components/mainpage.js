@@ -1,3 +1,5 @@
+import { backendAddress } from "../scripts/backend-address.js";
+import Censored from "./censored.js";
 export default class MainPage extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -28,16 +30,24 @@ customElements.define('comp-mainpage', MainPage);
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    const censoredComponent = document.querySelector('comp-censored')
     var btnStart = document.getElementById('btn-start');
-    btnStart.addEventListener('click', ()=>{
+    btnStart.addEventListener('click', async () => {
 
         var input = document.getElementById('textarea-input');
         var text = input.value;
+        const textJson = {"text": text}
 
         // send to backend
-        if(text.length > 0)
-        {
-            console.log(text)
-        }
+        const response = await fetch(`${backendAddress}/censore-text`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(textJson)
+            })
+        
+        const result = await response.json()
+        censoredComponent.SetValue(result);
     })
 })
