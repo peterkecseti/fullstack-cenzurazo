@@ -27,16 +27,34 @@ namespace BACKEND.Controllers
         [HttpPost("add-words")]
         public async Task<IActionResult> AddWords([FromBody] List<WordInputDto> input)
         {
-            var words = input.Select(dto => new Word
+            foreach (var dto in input)
             {
-                Original = dto.Word,
-                Replacements = dto.Replacements
-            }).ToList();
+                var existingWord = await _context.Words
+                    .FirstOrDefaultAsync(w => w.Original == dto.Word);
 
-            _context.Words.AddRange(words);
+                if (existingWord != null) // if word already exists, merge the replacement lists
+                {
+                    existingWord.Replacements = existingWord.Replacements
+                        .Union(dto.Replacements, StringComparer.OrdinalIgnoreCase)
+                        .ToList();
+
+                    _context.Words.Update(existingWord);
+                }
+                else
+                {
+                    var newWord = new Word
+                    {
+                        Original = dto.Word,
+                        Replacements = dto.Replacements
+                    };
+
+                    _context.Words.Add(newWord);
+                }
+            }
+
             await _context.SaveChangesAsync();
 
-            return Ok(words);
+            return Ok();
         }
 
         [HttpDelete("delete-word/{id}")]
